@@ -1,27 +1,26 @@
-import SqlBuilder from "../index";
-export const { select, printSelect } =
-    SqlBuilder<dbTable, dbInt, dbFloat, dbDateTime, dbString, dbBinary>();
-/*
+import { TABLE, COLUMN, INT, DECIMAL, DATETIME, STRING, BINARY, NOTNULLABLE, NULLABLE } from "..";
 
-Book
------
-id         | Int
-authorId   | Int
-price      | Decimal
-released   | DateTime
-isbn       | String
-coverImage | Binary
+interface Book_id extends INT, NOTNULLABLE {};
+interface Book_authorId extends INT, NOTNULLABLE {};
+interface Book_price extends DECIMAL, NOTNULLABLE {};
+interface Book_released extends DATETIME, NULLABLE {};
+interface Book_isbn extends STRING, NULLABLE {};
+interface Book_coverImage extends BINARY, NULLABLE {};
 
-Author
-------
-id   | Int
-age  | Int
-name | String
+interface Author_id extends INT, NOTNULLABLE {};
+interface Author_age extends INT, NULLABLE {};
+interface Author_name extends STRING, NULLABLE {};
 
-*/
-export type dbTable = "Book" | "Author";
-export type dbInt = "Book.id" | "Book.authorId" | "Author.id" | "Author.age";
-export type dbFloat = "Book.price";
-export type dbDateTime = "Book.released";
-export type dbString = "Book.isbn";
-export type dbBinary = "Book.coverImage";
+export const Book = {
+    id: { type: "INT", nullable: false } as Book_id,
+    authorId: { type: "INT", nullable: false } as Book_authorId,
+    price: { type: "DECIMAL", nullable: false } as Book_price,
+    released: { type: "DATETIME", nullable: true  } as Book_released,
+    isbn: { type: "STRING", nullable: true } as Book_isbn,
+    coverImage: { type: "BINARY", nullable: true  } as Book_coverImage
+}
+export const Author = {
+    id: { type: "INT", nullable: false } as Author_id,
+    age: { type: "INT", nullable: true } as Author_age,
+    name: { type: "STRING", nullable: true } as Author_name
+}

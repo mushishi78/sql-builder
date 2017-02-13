@@ -1,16 +1,14 @@
 import { Logic } from "./logic";
 import { Condition } from "./condition";
+import { TABLE, COLUMN } from "./data";
 
-export interface Select<Table, I, F, D, S, B> {
-    columns: (I | F | D | S | B)[],
-    from: Table,
-    where: Logic<Condition<I, F, D, S, B>>
+export interface Select {
+    columns: COLUMN[],
+    from: TABLE,
+    where: Logic<Condition>
 }
 
-export function select<Table, I, F, D, S, B>(
-    query: Select<Table, I, F, D, S, B>) {
-
+export function select(query: Select) {
     // Run time sanity checks go here
-
     return query;
 }

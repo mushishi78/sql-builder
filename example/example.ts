@@ -1,12 +1,13 @@
-import { select, printSelect } from "./schema";
+import { Book, Author } from "./schema";
+import { select, printSelect} from "..";
 
 const query = select({
-    columns: ["Book.id", "Book.authorId", "Book.price"],
-    from: "Book",
+    columns: [Book.id, Book.authorId, Book.price],
+    from: Book,
     where: [
-        ["Book.authorId", "=", 60],
+        [Book.authorId, "=", Book.id],
         "AND",
-        ["Book.price", "<", 5.0]
+        [Book.price, "<", 5.0]
     ]
 });
 

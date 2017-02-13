@@ -1,6 +1,6 @@
 import { Select } from "./select";
 
-export function printSelect<Table, I, F, D, S, B>(query: Select<Table, I, F, D, S, B>) {
+export function printSelect(query: Select) {
     let str = `SELECT ${query.columns.join(", ")}\nFROM ${query.from}\n`;
 
     if (query.where) {

@@ -1,5 +1,7 @@
-export type Condition<I, F, D, S, B> =
-    [I, "=" | "<>" | "!=" | ">" | ">=" | "<" | "<=", number | I] |
-    [F, "=" | "<>" | "!=" | ">" | ">=" | "<" | "<=", number | F] |
-    [D, "=" | "<>" | "!=" | ">" | ">=" | "<" | "<=", Date | D] |
-    [S, "=" | "<>" | "!=" , string | S];        
+import { INT, DECIMAL, DATETIME, STRING, BINARY, NULLABLE } from "./data";
+
+export type Condition =
+    [INT, "=" | "<>" | "!=" | ">" | ">=" | "<" | "<=", number | INT] |
+    [DECIMAL, "=" | "<>" | "!=" | ">" | ">=" | "<" | "<=", number | DECIMAL] |
+    [DATETIME, "=" | "<>" | "!=" | ">" | ">=" | "<" | "<=", Date | DATETIME] |
+    [STRING, "=" | "<>" | "!=" , string | STRING];
